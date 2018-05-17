@@ -5,23 +5,34 @@ import "./App.css";
 import List from "./components/List";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: [
-        // {
-        //   id: 1,
-        //   title: "Teach Cypress Testing Suite",
-        //   isComplete: false
-        // }
-      ]
-    };
-  }
+  state = {
+    todos: [
+      // {
+      //   id: 1,
+      //   title: "Teach Cypress Testing Suite",
+      //   isComplete: false
+      // }
+    ],
+    inputText: ""
+  };
+
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
     return (
       <div className="App">
         <header className="App-header" />
-        <input className="new_todo" placeholder="Add new Todo" />
+        <input
+          data-cypress-input
+          value={this.state.inputText}
+          name="inputText"
+          onChange={this.handleChange}
+          autoFocus
+          className="new_todo"
+          placeholder="Add new Todo"
+        />
         <List todos={this.state.todos} />
       </div>
     );

@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "dbad9330-f8d2-4ed3-9143-b7f5de241459",
+		"name": "DEMO_TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Aaron - GET-/api/products-(DEMO)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6b04c497-4ea1-4d2d-997f-db4242338822",
+						"type": "text/javascript",
+						"exec": [
+							"const res = pm.response.json();",
+							"",
+							"// pm.test('Shouldn\\'t do much', () => {",
+							"//     pm.expect(true).to.eql(true);",
+							"// });",
+							"",
+							"pm.test('Should have 200 Status', () => {",
+							"    pm.expect(pm.response.code).to.eql(200);",
+							"});",
+							"",
+							"pm.test('Should recieve an array', () => {",
+							"    pm.expect(Array.isArray(res)).to.eql(true);",
+							"});",
+							"",
+							"pm.test('Should have IMG URL\\'s', () => {",
+							"    const hasImgs = res.reduce((prev, cur) => cur.imgUrl && prev ? true : false);",
+							"    pm.expect(hasImgs).to.eql(true);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://dogcompanydtx.com/api/products",
+					"protocol": "http",
+					"host": [
+						"dogcompanydtx",
+						"com"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
